@@ -19,7 +19,7 @@ BEAM_SIZE = 3
 MAX_SEG_LENGTH = 20
 ID_TO_WORD_PATH = os.path.join(settings.STATIC_ROOT, 'vocab/id_to_word.pkl')
 with open(ID_TO_WORD_PATH, 'rb') as f:
-        ID_TO_WORD = pickle.load(f)
+        ID_TO_WORD = pickle.loads(f)
 END_ID = [k for k, v in ID_TO_WORD.items() if v == '<end>'][0]
 VOCAB_SIZE = len(ID_TO_WORD)
 ENCODER_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder.pth')
