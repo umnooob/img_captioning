@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>看图说话</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+{#    Bootstrap 5 #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<h1 align="center">看图说话</h1>
+<p align="center">使用Django部署的图片说明生成器 <br>上传图像不会被保存.</p>
+<p align="center">A simple Django web app with ResNet+LSTM which will try to generate caption of the image. <br>Uploaded images are not saved.</p>
+<div align="center">
+<form method="post" enctype="multipart/form-data" style="margin-top: 50px; margin-bottom: 30px;">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" id="btnUpload" class="btn btn-primary">Upload</button>
+</form>
+</div>
+{% if image_uri is not None %}
+ <div align="center">
+    <img src="{{ image_uri }}" class="img-fluid" alt="Uploaded image"
+         style="max-width: min(500px, 50%); height: auto; margin-top: 30px;">
+</div>
+    {% if predicted_res is not None %}
+        
+        <div class="alert alert-primary" role="alert" align="center">
+        {% for  predicted_label,percentage in  predicted_res %}
+            {{ forloop.counter }}: Predicted label: <b>{{ predicted_label }}</b> Confidence: <b>{{ percentage }}%</b>.<br>
+        {% endfor %}
+        </div>
+        
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Prediction error. No label predicted.
+        </div>
+    {% endif %}
+{% endif %}
+
+<p align="center"><small>More Info:
+    <a href="https://github.com/hashi0203/image-captioning" target="_blank">模型实现细节@hashi0203</a>,
+    <a href="https://stefanbschneider.github.io/blog/pytorch-django" target="_blank">Django部署@stefanbschneider</a><br>
+    <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf" target="_blank"> "Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML2015)</a>
+    </small>
+</p>
+
+</body>
+</html>
