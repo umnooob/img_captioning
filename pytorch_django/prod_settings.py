@@ -13,7 +13,7 @@ DEBUG = False
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', SECRET_KEY)
 
-ALLOWED_HOSTS = ['pytorch-django.herokuapp.com']
+ALLOWED_HOSTS = ['img-captioning.herokuapp.com']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
