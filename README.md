@@ -1,6 +1,10 @@
 # Image Captioning
 **A Django App for image captioning (PyTorch)**
 
+## Live Demo
+
+[看图说话 (img-captioning.herokuapp.com)](https://img-captioning.herokuapp.com/)
+
 ## Install
 
 1. Download project
@@ -40,6 +44,7 @@ You can refer to this [blog](https://stefanbschneider.github.io/blog/pytorch-dja
 If your employment doesn't exceed 500MB and your model params file exceed 200MB, you can use [git lfs](https://git-lfs.github.com/) and this [Heroku Buildpack](https://elements.heroku.com/buildpacks/raxod502/heroku-buildpack-git-lfs) for simple git-based deployment.
 
 ### Docker-based Deployment(Ours)
+you can find more information in Dockerfil. Since I'm new to docker, the docker image may be redundent and relatively big. PRs are welcome.
 
 [Reference](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/#heroku-container-runtime)
 
@@ -66,5 +71,39 @@ If your employment doesn't exceed 500MB and your model params file exceed 200MB,
 #### Heroku Deployment Using Container Registry
 
 1. [Sign up](https://signup.heroku.com/) for Heroku account, and then install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) .
+
 2. create a new app in Heroku
-3. 
+
+3. set secret key for Django in Heroku
+
+   ```bash
+   heroku config:set DJANGO_SECRET_KEY=<SOME_SECRET_VALUE> -a limitless-atoll-51647
+   ```
+
+4. add Heroku url to `ALLOWED_HOSTS` in ./pytorch_django/setting.py
+
+   ```python
+   ALLOWED_HOSTS = ['<your_app_name>.herokuapp.com']
+   ```
+
+5. Login, build docker image, Push docker image and release(it may take minutes to push image)
+
+   ```bash
+   heroku container:login -i
+   docker build -t registry.heroku.com/<your_app_name>/web .
+   docker push registry.heroku.com/<your_app_name>/web
+   heroku container:release -a <your_app_name> web
+   ```
+
+6. Finally, you can view your app running in Heroku https://APP_NAME.herokuapp.com
+
+## Model
+
+paper:["Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML2015)](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf)
+
+Use ResNet-152 to encode a 224*224 RGB picture as a 256-dim embedding, then use a LSTM model to decode. Origin model is trained in MSCOCO dataset.
+
+You can modify models by changing image/image_captioning/models.py as well as image_captioning.py. Model parameters can be found in static/*.
+
+
+
