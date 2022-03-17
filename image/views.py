@@ -3,8 +3,6 @@ import io
 import json
 import os
 import torch
-from torchvision import models
-from torchvision import transforms
 from PIL import Image
 from django.shortcuts import render
 from django.conf import settings

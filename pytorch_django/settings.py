@@ -19,15 +19,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om+mod^k%vsvrw(^s%7g(0#utf#7m0^qcro211m&0l!im*j@3z'
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'om+mod^k%vsvrw(^s%7g(0#utf#7m0^qcro211m&0l!im*j@3z'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
+SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
 
+DEBUG = int(os.environ.get('DEBUG', default=0))
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','img-captioning.herokuapp.com']
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Application definition
 
 INSTALLED_APPS = [
@@ -129,3 +135,4 @@ MEDIA_ROOT = (
     BASE_DIR
 )
 MEDIA_URL = '/media/'
+

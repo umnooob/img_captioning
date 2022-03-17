@@ -7,5 +7,6 @@ django-heroku==0.3.1
 # https://stackoverflow.com/a/59122860/2745116
 #https://download.pytorch.org/whl/cpu/torch-1.8.1-cp39-cp39-manylinux2014_aarch64.whl
 #https://download.pytorch.org/whl/cpu/torchvision-0.9.1-cp39-cp39-manylinux2014_aarch64.whl
-torch==1.8.1+cpu
-torchvision==0.9.1+cpu
+torch==1.11.0+cpu
+torchvision==0.12.0+cpu
+# numpy==1.20.3

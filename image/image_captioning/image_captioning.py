@@ -19,10 +19,12 @@ BEAM_SIZE = 3
 MAX_SEG_LENGTH = 20
 ID_TO_WORD_PATH = os.path.join(settings.STATIC_ROOT, 'vocab/id_to_word.pkl')
 with open(ID_TO_WORD_PATH, 'rb') as f:
-        ID_TO_WORD = pickle.loads(f)
+        ID_TO_WORD = pickle.load(f)
 END_ID = [k for k, v in ID_TO_WORD.items() if v == '<end>'][0]
 VOCAB_SIZE = len(ID_TO_WORD)
-ENCODER_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder.pth')
+ENCODER_PATH =  os.path.join(settings.STATIC_ROOT, 'model/encoder.pth')
+ENCODER_LINEAR_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder-linear.pth')
+ENCODER_BN_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder-bn.pth')
 DECODER_PATH = os.path.join(settings.STATIC_ROOT, 'model/decoder.pth')
 
 # load models only once
@@ -35,6 +37,8 @@ decoder = DecoderRNN(EMBEDDING_DIM, HIDDEN_DIM, VOCAB_SIZE, NUM_LAYERS, MAX_SEG_
 decoder = decoder.to(device).eval()
 
 # Load the trained model parameters
+# encoder.linear.load_state_dict(torch.load(ENCODER_LINEAR_PATH))
+# encoder.bn.load_state_dict(torch.load(ENCODER_BN_PATH))
 encoder.load_state_dict(torch.load(ENCODER_PATH))
 decoder.load_state_dict(torch.load(DECODER_PATH))
 
