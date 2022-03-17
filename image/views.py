@@ -41,6 +41,3 @@ def index(request):
         'predicted_res': predicted_res,
     }
     return render(request, 'image/index.html', context)
-
-if __name__ == '__main__':
-    print(inference(open("D:\R.jpg", 'rb').read()))

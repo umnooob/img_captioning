@@ -74,11 +74,9 @@ class DecoderRNN(nn.Module):
         hiddens, states = self.lstm(inputs, states)                                 # hiddens: (1, 1, HIDDEN_DIM)
         outputs = self.linear(hiddens.squeeze(1))                                   # outputs: (1, VOCAB_SIZE)
         outputs = self.logsoftmax(outputs)
-
         prob, predicted = outputs.max(1)                                            # predicted: (1)
         sampled_ids = [(predicted, prob)]
         beam = [(self.embed(s).unsqueeze(1), states) for s, _ in sampled_ids]       # beam: [(inputs, states)]
-
         for _ in range(self.MAX_SEG_LENGTH-1):
             states_list = []
             prob_list = torch.tensor([]).to(device)
@@ -98,7 +96,6 @@ class DecoderRNN(nn.Module):
                     idxs = zip([i] * VOCAB_SIZE, list(range(VOCAB_SIZE)))           # idx: [(beam_idx, vocab_idx)] * (VOCAB_SIZE)
                     idx_list.extend(idxs)                                           # idx_list: [(beam_idx, vocab_idx)] * (all inferred results of this layer)
                     prob_list = torch.cat((prob_list, outputs[0]))                  # prob_list: [prob] * (all inferred results of this layer)
-
             sorted, indices = torch.sort(prob_list, descending=True)                # sorted: sorted probabilities in the descending order, indices: idx of the sorted probabilities in the descending order
             prob = sorted[:BEAM_SIZE]
             beam_idx, vocab_idx = zip(*[idx_list[i] for i in indices[:BEAM_SIZE]])

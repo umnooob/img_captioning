@@ -15,7 +15,7 @@ from .models import EncoderCNN, DecoderRNN
 EMBEDDING_DIM = 256
 HIDDEN_DIM = 512
 NUM_LAYERS = 2
-BEAM_SIZE = 3
+BEAM_SIZE = 5
 MAX_SEG_LENGTH = 20
 ID_TO_WORD_PATH = os.path.join(settings.STATIC_ROOT, 'vocab/id_to_word.pkl')
 with open(ID_TO_WORD_PATH, 'rb') as f:
@@ -76,5 +76,5 @@ def inference(image_bytes):
             if word == '<end>':
                 break
         sentence = ' '.join(sampled_caption)
-        res.append((sentence, math.exp(prob.item())*100))
+        res.append((sentence, math.exp(prob.item()/len(sampled_id))*100))
     return res

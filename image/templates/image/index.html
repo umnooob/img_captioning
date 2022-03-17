@@ -15,7 +15,7 @@
 
 
 <h1 align="center">看图说话</h1>
-<p align="center">使用Django部署的图片说明生成器 <br>上传图像不会被保存.</p>
+<p align="center">使用Django+docker部署的图片说明生成器 <br>上传图像不会被保存.</p>
 <p align="center">A simple Django web app with ResNet+LSTM which will try to generate caption of the image. <br>Uploaded images are not saved.</p>
 <div align="center">
 <form method="post" enctype="multipart/form-data" style="margin-top: 50px; margin-bottom: 30px;">
@@ -33,7 +33,7 @@
         
         <div class="alert alert-primary" role="alert" align="center">
         {% for  predicted_label,percentage in  predicted_res %}
-            {{ forloop.counter }}: Predicted: <b>{{ predicted_label }}</b> Confidence: <b>{{ percentage }}%</b>.<br>
+            <b>Predicted{{ forloop.counter }}:</b> {{ predicted_label }} <b>P=</b> {{ percentage|floatformat:4}}<b>%</b>.<br>
         {% endfor %}
         </div>
         
@@ -44,8 +44,9 @@
     {% endif %}
 {% endif %}
 
-<p align="center"><small>More Info:
-    <a href="https://github.com/umnooob/img_captioning" target="_blank">github</a><br>
+<p align="center">
+<a href="https://github.com/umnooob/img_captioning" target="_blank">github</a><br>
+    <small>
     <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf" target="_blank"> "Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML2015)</a>
     </small>
 </p>

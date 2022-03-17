@@ -14,7 +14,7 @@
 ## Live Demo
 
 [看图说话 (img-captioning.herokuapp.com)](https://img-captioning.herokuapp.com/)
-
+![Demo](docs/demo.gif)
 ## Install
 
 1. Download project
@@ -99,7 +99,8 @@ you can find more information in Dockerfile. Since I'm new to docker, the docker
 5. Login, build docker image, Push docker image and release(it may take minutes to push image)
 
    ```bash
-   heroku container:login -i
+   heroku login -i
+   heroku container:login 
    docker build -t registry.heroku.com/<your_app_name>/web .
    docker push registry.heroku.com/<your_app_name>/web
    heroku container:release -a <your_app_name> web
