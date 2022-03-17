@@ -80,7 +80,7 @@ you can find more information in Dockerfile. Since I'm new to docker, the docker
    heroku config:set DJANGO_SECRET_KEY=<SOME_SECRET_VALUE> -a limitless-atoll-51647
    ```
 
-4. add Heroku url to `ALLOWED_HOSTS` in ./pytorch_django/setting.py
+4. add Heroku url to `ALLOWED_HOSTS` in `./pytorch_django/setting.py`
 
    ```python
    ALLOWED_HOSTS = ['<your_app_name>.herokuapp.com']
@@ -103,7 +103,7 @@ paper:["Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML
 
 Use ResNet-152 to encode a 224*224 RGB picture as a 256-dim embedding, then use a LSTM model to decode. Origin model is trained in MSCOCO dataset.
 
-You can modify models by changing image/image_captioning/models.py as well as image_captioning.py. Model parameters can be found in static/*.
+You can modify models by changing `image/image_captioning/models.py` as well as `image_captioning.py`. Model parameters can be found in `static/*`.
 
 
 
