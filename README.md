@@ -12,9 +12,13 @@
   - [Model](#model)
 
 ## Live Demo
+
 It may take seconds to generate caption, please be patient :)
+
 [看图说话 (img-captioning.herokuapp.com)](https://img-captioning.herokuapp.com/)
+
 ![Demo](docs/demo.gif)
+
 ## Install
 
 1. Download project
