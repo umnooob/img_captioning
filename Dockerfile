@@ -25,4 +25,4 @@ USER myuser
 
 # run gunicorn
 #comment this in Heroku deployment
-#CMD gunicorn pytorch_django.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn pytorch_django.wsgi:application --bind 0.0.0.0:$PORT
