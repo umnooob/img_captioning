@@ -33,20 +33,19 @@
         
         <div class="alert alert-primary" role="alert" align="center">
         {% for  predicted_label,percentage in  predicted_res %}
-            {{ forloop.counter }}: Predicted label: <b>{{ predicted_label }}</b> Confidence: <b>{{ percentage }}%</b>.<br>
+            {{ forloop.counter }}: Predicted: <b>{{ predicted_label }}</b> Confidence: <b>{{ percentage }}%</b>.<br>
         {% endfor %}
         </div>
         
     {% else %}
         <div class="alert alert-danger" role="alert">
-            Prediction error. No label predicted.
+            Prediction error. Nothing predicted.
         </div>
     {% endif %}
 {% endif %}
 
 <p align="center"><small>More Info:
-    <a href="https://github.com/hashi0203/image-captioning" target="_blank">模型实现细节@hashi0203</a>,
-    <a href="https://stefanbschneider.github.io/blog/pytorch-django" target="_blank">Django部署@stefanbschneider</a><br>
+    <a href="https://github.com/umnooob/img_captioning" target="_blank">github</a><br>
     <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf" target="_blank"> "Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML2015)</a>
     </small>
 </p>

@@ -115,9 +115,3 @@ class DecoderRNN(nn.Module):
 
         return sampled_ids
 
-
-if __name__ == "__main__":
-    encoder=EncoderCNN(256)
-    encoder.load_state_dict(torch.load('D:\\pytorch-django-main\\static\\model\\encoder.pth'))
-    torch.save(encoder.linear.state_dict(), 'D:\\pytorch-django-main\\static\model\\encoder-linear.pth')
-    torch.save(encoder.bn.state_dict(), 'D:\\pytorch-django-main\\static\model\\encoder-bn.pth')
