@@ -1,7 +1,15 @@
 # Image Captioning
 **A Django App for image captioning (PyTorch)**
 
-[TOC]
+- [Image Captioning](#image-captioning)
+  - [Live Demo](#live-demo)
+  - [Install](#install)
+  - [Deployment on Heroku](#deployment-on-heroku)
+    - [Git-based deployment](#git-based-deployment)
+    - [Docker-based Deployment(Ours)](#docker-based-deploymentours)
+      - [Local Test](#local-test)
+      - [Heroku Deployment Using Container Registry](#heroku-deployment-using-container-registry)
+  - [Model](#model)
 
 ## Live Demo
 
