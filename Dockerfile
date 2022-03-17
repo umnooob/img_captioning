@@ -24,4 +24,5 @@ RUN useradd -u 8877 myuser
 USER myuser
 
 # run gunicorn
-CMD gunicorn pytorch_django.wsgi:application --bind 0.0.0.0:$PORT
+#comment this in Heroku deployment
+#CMD gunicorn pytorch_django.wsgi:application --bind 0.0.0.0:$PORT
