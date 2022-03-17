@@ -44,7 +44,7 @@ You can refer to this [blog](https://stefanbschneider.github.io/blog/pytorch-dja
 If your employment doesn't exceed 500MB and your model params file exceed 200MB, you can use [git lfs](https://git-lfs.github.com/) and this [Heroku Buildpack](https://elements.heroku.com/buildpacks/raxod502/heroku-buildpack-git-lfs) for simple git-based deployment.
 
 ### Docker-based Deployment(Ours)
-you can find more information in Dockerfil. Since I'm new to docker, the docker image may be redundent and relatively big. PRs are welcome.
+you can find more information in Dockerfile. Since I'm new to docker, the docker image may be redundent and relatively big. PRs are welcome.
 
 [Reference](https://testdriven.io/blog/deploying-django-to-heroku-with-docker/#heroku-container-runtime)
 
