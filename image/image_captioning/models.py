@@ -4,7 +4,18 @@ from torchvision import models
 from torch.nn.utils.rnn import pack_padded_sequence
 
 class EncoderCNN(nn.Module):
+    instance = None
+    init_flag = False
+    def __new__(cls, *args, **kwargs):
+        if cls.instance is None:
+            cls.instance = super().__new__(cls)
+        return cls.instance
+
     def __init__(self, EMBEDDING_DIM):
+        if EncoderCNN.init_flag:
+            return
+        print("init")
+        EncoderCNN.init_flag = True
         # Load the pretrained ResNet-152 and replace top fc layer.
         super(EncoderCNN, self).__init__()
         resnet = models.resnet152()
@@ -24,7 +35,16 @@ class EncoderCNN(nn.Module):
 
 
 class DecoderRNN(nn.Module):
+    instance = None
+    init_flag = False
+    def __new__(cls, *args, **kwargs):
+        if cls.instance is None:
+            cls.instance = super().__new__(cls)
+        return cls.instance
     def __init__(self, EMBEDDING_DIM, HIDDEN_DIM, VOCAB_SIZE, num_layers, MAX_SEG_LENGTH=20):
+        if DecoderRNN.init_flag:
+            return
+        DecoderRNN.init_flag = True
         # Set the hyper-parameters and build the layers.
         super(DecoderRNN, self).__init__()
         self.embed = nn.Embedding(VOCAB_SIZE, EMBEDDING_DIM)

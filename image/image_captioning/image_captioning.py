@@ -23,8 +23,6 @@ with open(ID_TO_WORD_PATH, 'rb') as f:
 END_ID = [k for k, v in ID_TO_WORD.items() if v == '<end>'][0]
 VOCAB_SIZE = len(ID_TO_WORD)
 ENCODER_PATH =  os.path.join(settings.STATIC_ROOT, 'model/encoder.pth')
-ENCODER_LINEAR_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder-linear.pth')
-ENCODER_BN_PATH = os.path.join(settings.STATIC_ROOT, 'model/encoder-bn.pth')
 DECODER_PATH = os.path.join(settings.STATIC_ROOT, 'model/decoder.pth')
 
 # load models only once
