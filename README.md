@@ -66,7 +66,7 @@ you can find more information in Dockerfile. Since I'm new to docker, the docker
 
 1. [Install docker](https://www.docker.com/products/docker-desktop)
 
-2.  build image and spin up a container
+2.  build image and spin up a container named <container_name> which is up to you.
 
    ```bash
    docker build -t web:latest .
@@ -91,7 +91,7 @@ you can find more information in Dockerfile. Since I'm new to docker, the docker
 3. set secret key for Django in Heroku
 
    ```bash
-   heroku config:set DJANGO_SECRET_KEY=<SOME_SECRET_VALUE> -a limitless-atoll-51647
+   heroku config:set DJANGO_SECRET_KEY=<SOME_SECRET_VALUE> -a <your_app_name>
    ```
 
 4. add Heroku url to `ALLOWED_HOSTS` in `./pytorch_django/setting.py`
