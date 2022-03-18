@@ -116,9 +116,9 @@ you can find more information in Dockerfile. Since I'm new to docker, the docker
 
 paper:["Show and Tell: A Neural Image Caption Generator" by Vinayls et al. (ICML2015)](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf)
 
-Use ResNet-152 to encode a 224*224 RGB picture as a 256-dim embedding, then use a LSTM model to decode. Origin model is trained in MSCOCO dataset.
+Use ResNet-152 to encode a 224*224 RGB picture as a 256-dim embedding, then use a LSTM model to decode. [Origin model](https://github.com/hashi0203/image-captioning) was trained in MSCOCO dataset.
 
-You can modify models by changing `image/image_captioning/models.py` as well as `image_captioning.py`. Model parameters can be found in `static/*`.
+You can modify models by changing `image/image_captioning/models.py` as well as `image_captioning.py`. Model parameters can be found in `static/*` .
 
 
 
